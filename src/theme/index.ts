@@ -4,12 +4,13 @@ const theme: DefaultTheme = {
   colors: {
     primary: '#7C41FF',
     success: '#00D775',
-    white: '#fff',
+    white: '#FFF',
+    danger: '#FF4C63',
     gray: {
       100: '#F5F6F8',
       200: '#D7DCE1',
       300: '#ACB5BF',
-      400: '#0A0B0D',
+      400: '#263238',
       500: '#131415',
     },
   },
@@ -32,7 +33,7 @@ const theme: DefaultTheme = {
     '5xl': { size: '3.5rem', lineHeight: '4rem' },
   },
   borderRadius: {
-    base: '16px',
+    base: '12px',
   },
   fontFamily: {
     sans: 'Inter, sans-serif',
