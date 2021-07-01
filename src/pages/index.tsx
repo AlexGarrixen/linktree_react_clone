@@ -5,6 +5,7 @@ import Button from '@components/Form/Button';
 import IconButton from '@components/Form/IconButton';
 import Trash from '@components/Icon/TrashOutlined';
 import Switch from '@components/Form/Switch';
+import Tabs, { Tab } from '@components/Navigation/Tabs';
 
 const Dashboard = () => (
   <div>
@@ -18,6 +19,11 @@ const Dashboard = () => (
       <Trash size={26} />
     </IconButton>
     <Switch colorScheme='success' />
+    <Tabs colorScheme='secondary' value='links'>
+      <Tab value='links'>Links</Tab>
+      <Tab value='appearance'>Apariencia</Tab>
+      <Tab value='settings'>Configuracion</Tab>
+    </Tabs>
   </div>
 );
 
