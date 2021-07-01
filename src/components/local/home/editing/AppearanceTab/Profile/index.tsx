@@ -49,6 +49,7 @@ const Profile = () => {
               name='avatar'
             />
             <Button
+              fullWidth
               onClick={() =>
                 dispatch({ type: 'update:profile', payload: { avatar: '' } })
               }

@@ -8,14 +8,9 @@ export const ContentBox = styled.div`
 `;
 
 export const HeadingBox = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 20px;
-
   & > div {
-    flex: 1;
+    margin-top: 12px;
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
     gap: 16px;
   }
 
@@ -24,6 +19,18 @@ export const HeadingBox = styled.div`
 
     button {
       pointer-events: none;
+    }
+  }
+
+  @media screen and (min-width: ${({ theme }) => theme.screens.md}) {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+
+    & > div {
+      flex: 1;
+      grid-template-columns: repeat(2, 1fr);
+      margin-top: 0;
     }
   }
 `;

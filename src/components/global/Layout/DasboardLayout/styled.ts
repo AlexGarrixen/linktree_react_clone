@@ -9,12 +9,16 @@ export const DashboardRoot = styled.div`
 `;
 
 export const ContentBox = styled.div`
-  display: grid;
-  height: 100%;
-  grid-template-columns: 1fr 0.6fr;
-  overflow: hidden;
+  overflow-y: auto;
+  overflow-x: hidden;
 
-  & > section {
-    overflow: hidden;
+  @media screen and (min-width: ${({ theme }) => theme.screens.md}) {
+    height: 100%;
+    display: grid;
+    grid-template-columns: 1fr 0.6fr;
+
+    & > section {
+      overflow-y: hidden;
+    }
   }
 `;
