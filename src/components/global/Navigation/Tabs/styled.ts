@@ -60,4 +60,5 @@ export const TabRoot = styled.li<
 
 export const TabsBox = styled.ul`
   display: inherit;
+  overflow-x: auto;
 `;
