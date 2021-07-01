@@ -2,6 +2,7 @@ import React from 'react';
 import { AppProps } from 'next/app';
 import { ThemeProvider } from 'styled-components';
 import theme, { GlobalStyle } from '@theme/index';
+import { Provider } from '@contexts/GlobalApp';
 import '../styles/global.css';
 
 function App({ Component, pageProps }: AppProps) {
@@ -9,7 +10,9 @@ function App({ Component, pageProps }: AppProps) {
     <>
       <ThemeProvider theme={theme}>
         <GlobalStyle />
-        <Component {...pageProps} />
+        <Provider>
+          <Component {...pageProps} />
+        </Provider>
       </ThemeProvider>
     </>
   );

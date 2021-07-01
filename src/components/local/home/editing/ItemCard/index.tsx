@@ -17,11 +17,13 @@ type EditableProps = {
   placeholder?: string;
   onChange?: (e: React.ChangeEvent) => void;
   value?: string;
+  name?: string;
 };
 
 export const Editable = ({
   placeholder,
   value: valueProp,
+  name,
   onChange,
 }: EditableProps) => {
   const [modeEditable, setModeEditable] = useState(false);
@@ -42,12 +44,15 @@ export const Editable = ({
           autoFocus
           type='text'
           value={value}
+          name={name}
           onChange={handleChange}
           onBlur={() => setModeEditable(false)}
         />
       ) : (
         <>
-          <button onClick={() => setModeEditable(true)}>placeholder</button>
+          <button onClick={() => setModeEditable(true)}>
+            {value || placeholder}
+          </button>
           <Pencil size='sm' color='gray.400' />
         </>
       )}

@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import styled from 'styled-components';
 import Button from '@components/Form/Button';
 import IconButton from '@components/Form/IconButton';
 import Thunder from '@components/Icon/ThunderFilled';
+import { AppContext } from '@contexts/GlobalApp';
 import ItemCard, { Editable } from '../ItemCard';
 
 const ActionsBox = styled.div`
@@ -22,26 +23,66 @@ const ItemsGrid = styled.ul`
 `;
 
 const LinksTab = () => {
+  const { state, dispatch } = useContext(AppContext);
+  const { items } = state;
+
+  const handleCreateItem = () =>
+    dispatch({
+      type: 'add:item',
+      payload: { type: 'network' },
+    });
+
+  const handleChangeEditable =
+    (idx: number) => (ev: React.ChangeEvent<HTMLInputElement>) => {
+      const { name, value } = ev.target;
+      dispatch({
+        type: 'update:item',
+        payload: { index: idx, data: { [name]: value } },
+      });
+    };
+
+  const handleChangeEnabled = (idx: number, isEnabled: boolean) =>
+    dispatch({
+      type: 'update:item',
+      payload: { index: idx, data: { enabled: isEnabled } },
+    });
+
   return (
     <div>
       <ActionsBox>
-        <Button colorScheme='primary'>Añadir nuevo link</Button>
+        <Button colorScheme='primary' onClick={handleCreateItem}>
+          Añadir nuevo link
+        </Button>
         <IconButton colorScheme='primary' disabled>
           <Thunder size={24} />
         </IconButton>
       </ActionsBox>
       <ItemsGrid>
-        <li>
-          <ItemCard centerAxisY centerAxisX>
-            <Editable placeholder='Some placeholder' />
-          </ItemCard>
-        </li>
-        <li>
-          <ItemCard centerAxisY>
-            <Editable placeholder='Some placeholder' />
-            <Editable placeholder='Some placeholder' />
-          </ItemCard>
-        </li>
+        {items.map(({ props }, idx) => (
+          <li key={idx}>
+            <ItemCard
+              centerAxisY
+              isEnabled={props.enabled}
+              onEnable={(isEnabled) => handleChangeEnabled(idx, isEnabled)}
+              onRequestRemove={() =>
+                dispatch({ type: 'delete:item', payload: { index: idx } })
+              }
+            >
+              <Editable
+                placeholder='Titulo'
+                value={props.title}
+                onChange={handleChangeEditable(idx)}
+                name='title'
+              />
+              <Editable
+                placeholder='url'
+                value={props.url}
+                onChange={handleChangeEditable(idx)}
+                name='url'
+              />
+            </ItemCard>
+          </li>
+        ))}
       </ItemsGrid>
     </div>
   );

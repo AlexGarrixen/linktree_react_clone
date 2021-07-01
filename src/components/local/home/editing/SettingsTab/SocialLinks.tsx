@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useCallback, useContext } from 'react';
 import styled from 'styled-components';
 import Title from '@components/DataDisplay/Title';
 import Input from '@components/Form/Input';
 import Spacing from '@components/Layout/Spacing';
+import { AppContext } from '@contexts/GlobalApp';
 
 const ContentBox = styled.div`
   background-color: ${({ theme }) => theme.colors.white};
@@ -17,29 +18,60 @@ const ContentBox = styled.div`
   }
 `;
 
-const SocialLinks = () => (
-  <section>
-    <Title size={{ xs: 'sm', sm: 'lg', md: 'xl' }}>Redes Sociales</Title>
-    <ContentBox>
-      <div>
+const SocialLinks = () => {
+  const { state, dispatch } = useContext(AppContext);
+  const networks = state.config.social;
+
+  const handleChangeInput = useCallback(
+    (ev: React.ChangeEvent<HTMLInputElement>) => {
+      const { name, value } = ev.target;
+      dispatch({ type: 'update:social-networks', payload: { [name]: value } });
+    },
+    [networks]
+  );
+
+  return (
+    <section>
+      <Title size={{ xs: 'sm', sm: 'lg', md: 'xl' }}>Redes Sociales</Title>
+      <ContentBox>
         <div>
-          <Title level='6'>Facebook</Title>
-          <Spacing size={8} />
-          <Input placeholder='Facebook url' fullWidth />
+          <div>
+            <Title level='6'>Facebook</Title>
+            <Spacing size={8} />
+            <Input
+              placeholder='https://facebook.com/user'
+              fullWidth
+              value={networks.facebook}
+              name='facebook'
+              onChange={handleChangeInput}
+            />
+          </div>
+          <div>
+            <Title level='6'>Twitter</Title>
+            <Spacing size={8} />
+            <Input
+              placeholder='https://twitter.com/user'
+              fullWidth
+              value={networks.twitter}
+              name='twitter'
+              onChange={handleChangeInput}
+            />
+          </div>
+          <div>
+            <Title level='6'>Instagram</Title>
+            <Spacing size={8} />
+            <Input
+              placeholder='https://instagram.com/user'
+              fullWidth
+              value={networks.instagram}
+              name='instagram'
+              onChange={handleChangeInput}
+            />
+          </div>
         </div>
-        <div>
-          <Title level='6'>Twitter</Title>
-          <Spacing size={8} />
-          <Input placeholder='Twitter url' fullWidth />
-        </div>
-        <div>
-          <Title level='6'>Instagram</Title>
-          <Spacing size={8} />
-          <Input placeholder='Instagram url' fullWidth />
-        </div>
-      </div>
-    </ContentBox>
-  </section>
-);
+      </ContentBox>
+    </section>
+  );
+};
 
 export default SocialLinks;

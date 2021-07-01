@@ -18,7 +18,9 @@
       "@theme/*": ["src/theme/*"],
       "@components/*": ["src/components/global/*"],
       "@localComponents/*": ["src/components/local/*"],
-      "@modules/*": ["src/modules/*"]
+      "@modules/*": ["src/modules/*"],
+      "@mocks/*": ["src/mocks/*"],
+      "@contexts/*": ["src/contexts/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
