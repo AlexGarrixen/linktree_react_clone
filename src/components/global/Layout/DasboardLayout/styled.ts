@@ -4,8 +4,12 @@ export const DashboardRoot = styled.div`
   height: 100vh;
   overflow: hidden;
   display: grid;
-  grid-template-columns: 64px 1fr;
+  grid-template-columns: 1fr;
   background-color: ${({ theme }) => theme.colors.gray[100]};
+
+  @media screen and (min-width: ${({ theme }) => theme.screens.md}) {
+    grid-template-columns: 64px 1fr;
+  }
 `;
 
 export const ContentBox = styled.div`

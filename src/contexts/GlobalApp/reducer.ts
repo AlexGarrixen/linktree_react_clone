@@ -1,3 +1,4 @@
+import shortid from 'shortid';
 import { State, ActionTypes } from './types';
 
 const reducer = (state: State, action: ActionTypes) => {
@@ -46,6 +47,7 @@ const reducer = (state: State, action: ActionTypes) => {
       const typeItem = action.payload.type;
       const clonedState = { ...state };
       const item = {
+        id: shortid.generate(),
         type: typeItem,
         props: { enabled: true, title: 'Title', url: '' },
       };

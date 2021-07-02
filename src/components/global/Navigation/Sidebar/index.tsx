@@ -7,10 +7,15 @@ const SidebarRoot = styled.aside`
   text-align: center;
   background-color: ${({ theme }) => theme.colors.white};
   padding: 20px 6px;
-  border-right: 1px solid ${({ theme }) => theme.colors.gray[200]};
+  border-bottom: 1px solid ${({ theme }) => theme.colors.gray[200]};
 
   img {
     width: 24px;
+  }
+
+  @media screen and (min-width: ${({ theme }) => theme.screens.md}) {
+    border-right: 1px solid ${({ theme }) => theme.colors.gray[200]};
+    border-bottom: 0;
   }
 `;
 
