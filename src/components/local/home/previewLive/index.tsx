@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import shortid from 'shortid';
 import Avatar from '@components/Media/Avatar';
 import Title from '@components/DataDisplay/Title';
 import Text from '@components/DataDisplay/Text';
@@ -36,7 +37,7 @@ const Preview = () => {
           {items.map(
             ({ props }) =>
               props.enabled && (
-                <a href={props.url} target='blank'>
+                <a href={props.url} target='blank' key={shortid.generate()}>
                   <li key={props.title}>
                     <Button colorScheme='white' fullWidth>
                       {props.title}

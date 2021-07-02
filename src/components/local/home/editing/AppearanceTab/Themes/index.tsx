@@ -17,7 +17,7 @@ const Themes = () => {
         <ThemesGrid>
           {themes.map((theme) => (
             <li
-              key={theme.name}
+              key={theme.id}
               onClick={() => dispatch({ type: 'update:theme', payload: theme })}
             >
               <ThemeMediabox
