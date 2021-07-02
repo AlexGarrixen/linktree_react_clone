@@ -1,11 +1,13 @@
 import React from 'react';
 
 export interface Item {
+  id: string;
   type: 'network';
   props: { title: string; url: string; enabled: boolean };
 }
 
 export interface Theme {
+  id: string;
   name: string;
   src: string;
 }

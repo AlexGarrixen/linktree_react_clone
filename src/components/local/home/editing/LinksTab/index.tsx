@@ -58,8 +58,8 @@ const LinksTab = () => {
         </IconButton>
       </ActionsBox>
       <ItemsGrid>
-        {items.map(({ props }, idx) => (
-          <li key={idx}>
+        {items.map(({ id, props }, idx) => (
+          <li key={id}>
             <ItemCard
               centerAxisY
               isEnabled={props.enabled}
