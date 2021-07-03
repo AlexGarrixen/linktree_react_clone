@@ -32,7 +32,9 @@ const SocialLinks = () => {
 
   return (
     <section>
-      <Title size={{ xs: 'sm', sm: 'lg', md: 'xl' }}>Redes Sociales</Title>
+      <Title level='3' size={{ xs: 'lg', md: 'xl' }}>
+        Redes Sociales
+      </Title>
       <ContentBox>
         <div>
           <div>

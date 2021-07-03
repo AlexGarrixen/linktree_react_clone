@@ -11,7 +11,9 @@ const Themes = () => {
 
   return (
     <section>
-      <Title size={{ xs: 'sm', sm: 'lg', md: 'xl' }}>Temas</Title>
+      <Title level='3' size={{ xs: 'lg', md: 'xl' }}>
+        Temas
+      </Title>
       <Spacing size={30} />
       <ContentBox>
         <ThemesGrid>

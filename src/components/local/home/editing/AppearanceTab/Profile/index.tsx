@@ -29,7 +29,9 @@ const Profile = () => {
 
   return (
     <section>
-      <Title size={{ xs: 'sm', sm: 'lg', md: 'xl' }}>Perfil</Title>
+      <Title level='3' size={{ xs: 'lg', md: 'xl' }}>
+        Perfil
+      </Title>
       <Spacing size={30} />
       <ContentBox>
         <HeadingBox>
